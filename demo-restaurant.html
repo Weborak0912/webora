@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Noir — Demo</title>
+<link rel="stylesheet" href="demo.css">
+<style>:root{--bg:#0b0a07;--alt:#0f0e0a;--a:#967e47;--b:#17140b;--c:#4e4021;--a2:rgba(160,130,60,.15)}</style>
+</head>
+<body>
+<header class="nav">
+  <a href="#top" class="brand">NOIR</a>
+  <nav><a href="#menu">MENU</a><a href="#about">ABOUT</a><a href="#book">CONTACT</a></nav>
+  <a href="#book" class="btn ghost">RESERVE</a>
+</header>
+<section class="hero" id="top"><div>
+  <p class="eyebrow">MODERN DINING</p>
+  <h1>Good food.<br><span>Great moments.</span></h1>
+  <p class="sub">A dining experience made for unforgettable evenings.</p>
+  <a href="#book" class="btn">Explore Menu</a>
+</div></section>
+<section class="sec alt" id="menu"><p class="label">OUR MENU</p><h2>A taste worth<br>remembering.</h2><div class="menu"><div><strong>Truffle Pasta</strong><span>₹450</span></div><div><strong>Signature Pizza</strong><span>₹520</span></div><div><strong>Grilled Paneer</strong><span>₹390</span></div><div><strong>Chocolate Torte</strong><span>₹320</span></div></div></section><section class="sec" id="about"><p class="label">ABOUT NOIR</p><h2>Warm lights,<br>honest food.</h2><p style="max-width:480px;color:#888;font-size:12px;line-height:1.9">Seasonal ingredients, a relaxed room and service that lets the evening unfold.</p></section>
+<section class="booking" id="book">
+  <p class="label">BOOKING</p>
+  <h2>Reserve a Table</h2>
+  <p class="intro">Reserve your table — we'll confirm by email or phone.</p>
+  <form class="bk-form" id="bookingForm" data-biz="Noir">
+    <label>FULL NAME<input name="name" required placeholder="Your name"></label>
+    <label>PHONE<input name="phone" type="tel" required placeholder="+91 98765 43210"></label>
+    <label class="full">EMAIL<input name="email" type="email" required placeholder="you@example.com"></label>
+    <label class="full">SERVICE<select name="service"><option>Dinner</option><option>Lunch</option><option>Birthday / Celebration</option><option>Private Event</option></select></label>
+    <label>DATE<input name="date" type="date" required></label>
+    <label>TIME<input name="time" type="time" required></label>
+    <label>GUESTS<select name="guests"><option>1-2</option><option>3-4</option><option>5-8</option><option>9+</option></select></label>
+    <label class="full">NOTES<textarea name="notes" placeholder="Special requests (optional)"></textarea></label>
+    <button class="btn" type="submit">Reserve a Table →</button>
+    <p class="bk-note">Demo: submitting opens your email app with the request pre-filled, addressed to the business. In your real website this can also go to WhatsApp or a booking dashboard.</p>
+  </form>
+  <div class="bk-ok" id="bookingOk">✓ Your email app should now be open with the booking request ready to send. Just press Send to complete it.</div>
+</section>
+<script>
+(function(){
+  var f=document.getElementById("bookingForm"),ok=document.getElementById("bookingOk");
+  var d=f.date; d.min=new Date().toISOString().split("T")[0];
+  f.addEventListener("submit",function(e){
+    e.preventDefault();
+    var v=function(n){return f.elements[n]?f.elements[n].value:""};
+    var body="New booking request — "+f.dataset.biz+"\n\nName: "+v("name")+"\nPhone: "+v("phone")+"\nEmail: "+v("email")+"\nService: "+v("service")+(f.elements.guests?"\nGuests: "+v("guests"):"")+"\nDate: "+v("date")+"\nTime: "+v("time")+"\nNotes: "+(v("notes")||"-");
+    window.location.href="mailto:weborak@gmail.com?subject="+encodeURIComponent("Booking request: "+v("service")+" — "+v("name"))+"&body="+encodeURIComponent(body);
+    ok.style.display="block";
+  });
+})();
+</script>
+<section class="cta" id="cta">
+  <p class="label">NOIR</p>
+  <h2>Your restaurant<br><span>deserves this.</span></h2>
+  <a href="index.html#contact" class="btn">Want a website like this?</a>
+</section>
+<div class="banner">This is a demo website by <a href="index.html">Webora K</a>. <a href="index.html">← Back to Webora K</a></div>
+</body>
+</html>

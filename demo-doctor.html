@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nova Clinic — Demo</title>
+<link rel="stylesheet" href="demo.css">
+<style>:root{--bg:#090d10;--alt:#0d151a;--a:#56859a;--b:#10242e;--c:#2d5361;--a2:rgba(80,140,165,.18)}</style>
+</head>
+<body>
+<header class="nav">
+  <a href="#top" class="brand">NOVA CLINIC</a>
+  <nav><a href="#about">ABOUT</a><a href="#services">TREATMENTS</a><a href="#book">CONTACT</a></nav>
+  <a href="#book" class="btn ghost">BOOK APPOINTMENT</a>
+</header>
+<section class="hero" id="top"><div>
+  <p class="eyebrow">TRUSTED MEDICAL CARE</p>
+  <h1>Better care.<br><span>Better health.</span></h1>
+  <p class="sub">Compassionate healthcare from experienced professionals.</p>
+  <a href="#book" class="btn">Book an Appointment</a>
+</div></section>
+<section class="stats"><div><strong>15+</strong>Years Experience</div><div><strong>10k+</strong>Patients Served</div><div><strong>4.9★</strong>Patient Rating</div></section><section class="sec" id="services"><p class="label">TREATMENTS</p><h2>Care for<br>every need.</h2><div class="grid"><div><span>01</span><h3>General Consultation</h3><p>Routine check-ups and everyday health concerns.</p></div><div><span>02</span><h3>Specialist Care</h3><p>Focused treatment from experienced specialists.</p></div><div><span>03</span><h3>Preventive Health</h3><p>Screenings and advice to stay well.</p></div></div></section><section class="sec alt" id="about"><p class="label">ABOUT NOVA</p><h2>Healthcare built<br>around people.</h2><p style="max-width:500px;color:#888;font-size:12px;line-height:1.9">From routine consultations to specialized care, Nova Clinic provides a comfortable and professional experience for every patient.</p></section>
+<section class="booking" id="book">
+  <p class="label">BOOKING</p>
+  <h2>Book an Appointment</h2>
+  <p class="intro">Request a consultation — our team will confirm your appointment.</p>
+  <form class="bk-form" id="bookingForm" data-biz="Nova Clinic">
+    <label>FULL NAME<input name="name" required placeholder="Your name"></label>
+    <label>PHONE<input name="phone" type="tel" required placeholder="+91 98765 43210"></label>
+    <label class="full">EMAIL<input name="email" type="email" required placeholder="you@example.com"></label>
+    <label class="full">SERVICE<select name="service"><option>General Consultation</option><option>Specialist Care</option><option>Preventive Health Check-up</option><option>Follow-up Visit</option></select></label>
+    <label>DATE<input name="date" type="date" required></label>
+    <label>TIME<input name="time" type="time" required></label>
+    
+    <label class="full">NOTES<textarea name="notes" placeholder="Briefly describe your concern (optional)"></textarea></label>
+    <button class="btn" type="submit">Book an Appointment →</button>
+    <p class="bk-note">Demo: submitting opens your email app with the request pre-filled, addressed to the business. In your real website this can also go to WhatsApp or a booking dashboard.</p>
+  </form>
+  <div class="bk-ok" id="bookingOk">✓ Your email app should now be open with the booking request ready to send. Just press Send to complete it.</div>
+</section>
+<script>
+(function(){
+  var f=document.getElementById("bookingForm"),ok=document.getElementById("bookingOk");
+  var d=f.date; d.min=new Date().toISOString().split("T")[0];
+  f.addEventListener("submit",function(e){
+    e.preventDefault();
+    var v=function(n){return f.elements[n]?f.elements[n].value:""};
+    var body="New booking request — "+f.dataset.biz+"\n\nName: "+v("name")+"\nPhone: "+v("phone")+"\nEmail: "+v("email")+"\nService: "+v("service")+(f.elements.guests?"\nGuests: "+v("guests"):"")+"\nDate: "+v("date")+"\nTime: "+v("time")+"\nNotes: "+(v("notes")||"-");
+    window.location.href="mailto:weborak@gmail.com?subject="+encodeURIComponent("Booking request: "+v("service")+" — "+v("name"))+"&body="+encodeURIComponent(body);
+    ok.style.display="block";
+  });
+})();
+</script>
+<section class="cta" id="cta">
+  <p class="label">NOVA CLINIC</p>
+  <h2>Make your practice<br><span>stand out online.</span></h2>
+  <a href="index.html#contact" class="btn">Want a website like this?</a>
+</section>
+<div class="banner">This is a demo website by <a href="index.html">Webora K</a>. <a href="index.html">← Back to Webora K</a></div>
+</body>
+</html>

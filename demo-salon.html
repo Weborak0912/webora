@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aura Salon — Demo</title>
+<link rel="stylesheet" href="demo.css">
+<style>:root{--bg:#0d0a0c;--alt:#141013;--a:#b06b8c;--b:#24151e;--c:#63364f;--a2:rgba(170,90,130,.2)}</style>
+</head>
+<body>
+<header class="nav">
+  <a href="#top" class="brand">AURA</a>
+  <nav><a href="#services">SERVICES</a><a href="#about">ABOUT</a><a href="#book">CONTACT</a></nav>
+  <a href="#book" class="btn ghost">BOOK NOW</a>
+</header>
+<section class="hero" id="top"><div>
+  <p class="eyebrow">PREMIUM BEAUTY STUDIO</p>
+  <h1>Beauty begins<br><span>with you.</span></h1>
+  <p class="sub">Hair, beauty and wellness designed around you.</p>
+  <a href="#book" class="btn">Book an Appointment</a>
+</div></section>
+<section class="sec alt" id="services"><p class="label">WHAT WE OFFER</p><h2>Designed around you.</h2><div class="grid"><div><span>01</span><h3>Hair Styling</h3><p>Professional styling for every occasion.</p></div><div><span>02</span><h3>Hair Colour</h3><p>Modern colour techniques and treatments.</p></div><div><span>03</span><h3>Beauty Care</h3><p>Relax, refresh and feel your best.</p></div></div></section><section class="sec" id="about"><p class="label">ABOUT AURA</p><h2>A calm space,<br>a confident you.</h2><p style="max-width:480px;color:#888;font-size:12px;line-height:1.9">Our stylists take time to understand what you want, then deliver a look that feels like you.</p></section>
+<section class="booking" id="book">
+  <p class="label">BOOKING</p>
+  <h2>Book an Appointment</h2>
+  <p class="intro">Choose a service, date and time — we'll confirm your slot shortly.</p>
+  <form class="bk-form" id="bookingForm" data-biz="Aura Salon">
+    <label>FULL NAME<input name="name" required placeholder="Your name"></label>
+    <label>PHONE<input name="phone" type="tel" required placeholder="+91 98765 43210"></label>
+    <label class="full">EMAIL<input name="email" type="email" required placeholder="you@example.com"></label>
+    <label class="full">SERVICE<select name="service"><option>Hair Styling</option><option>Hair Colour</option><option>Beauty Care</option><option>Bridal / Party Makeup</option></select></label>
+    <label>DATE<input name="date" type="date" required></label>
+    <label>TIME<input name="time" type="time" required></label>
+    
+    <label class="full">NOTES<textarea name="notes" placeholder="Anything we should know? (optional)"></textarea></label>
+    <button class="btn" type="submit">Book an Appointment →</button>
+    <p class="bk-note">Demo: submitting opens your email app with the request pre-filled, addressed to the business. In your real website this can also go to WhatsApp or a booking dashboard.</p>
+  </form>
+  <div class="bk-ok" id="bookingOk">✓ Your email app should now be open with the booking request ready to send. Just press Send to complete it.</div>
+</section>
+<script>
+(function(){
+  var f=document.getElementById("bookingForm"),ok=document.getElementById("bookingOk");
+  var d=f.date; d.min=new Date().toISOString().split("T")[0];
+  f.addEventListener("submit",function(e){
+    e.preventDefault();
+    var v=function(n){return f.elements[n]?f.elements[n].value:""};
+    var body="New booking request — "+f.dataset.biz+"\n\nName: "+v("name")+"\nPhone: "+v("phone")+"\nEmail: "+v("email")+"\nService: "+v("service")+(f.elements.guests?"\nGuests: "+v("guests"):"")+"\nDate: "+v("date")+"\nTime: "+v("time")+"\nNotes: "+(v("notes")||"-");
+    window.location.href="mailto:weborak@gmail.com?subject="+encodeURIComponent("Booking request: "+v("service")+" — "+v("name"))+"&body="+encodeURIComponent(body);
+    ok.style.display="block";
+  });
+})();
+</script>
+<section class="cta" id="cta">
+  <p class="label">AURA</p>
+  <h2>Ready for your<br><span>next look?</span></h2>
+  <a href="index.html#contact" class="btn">Want a website like this?</a>
+</section>
+<div class="banner">This is a demo website by <a href="index.html">Webora K</a>. <a href="index.html">← Back to Webora K</a></div>
+</body>
+</html>
